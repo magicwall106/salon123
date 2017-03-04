@@ -1,0 +1,10 @@
+version: '2'
+services:
+    salon123-elasticsearch:
+        container_name: salon123-elasticsearch
+        image: elasticsearch:2.3.5
+        # volumes:
+        #     - ~/volumes/jhipster/salon123/elasticsearch/:/usr/share/elasticsearch/data/
+        ports:
+            - 9200:9200
+            - 9300:9300

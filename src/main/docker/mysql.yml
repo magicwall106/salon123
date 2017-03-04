@@ -1,0 +1,14 @@
+version: '2'
+services:
+    salon123-mysql:
+        container_name: salon123-mysql
+        image: mysql:5.7.14
+        # volumes:
+        #     - ~/volumes/jhipster/salon123/mysql/:/var/lib/mysql/
+        environment:
+            - MYSQL_USER=root
+            - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+            - MYSQL_DATABASE=salon123
+        ports:
+            - 3306:3306
+        command: mysqld --lower_case_table_names=1 --skip-ssl
