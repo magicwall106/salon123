@@ -5,8 +5,6 @@ import com.salon123.domain.Authority;
 import com.salon123.domain.User;
 import com.salon123.repository.AuthorityRepository;
 import com.salon123.repository.UserRepository;
-import com.salon123.service.MailService;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,7 +12,11 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.social.connect.*;
+import org.springframework.social.connect.Connection;
+import org.springframework.social.connect.ConnectionKey;
+import org.springframework.social.connect.ConnectionRepository;
+import org.springframework.social.connect.UserProfile;
+import org.springframework.social.connect.UsersConnectionRepository;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,7 +27,13 @@ import javax.inject.Inject;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.anyObject;
+import static org.mockito.Mockito.anyString;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Salon123App.class)
@@ -186,7 +194,7 @@ public class SocialServiceIntTest {
         User user = userRepository.findOneByEmail("mail@mail.com").get();
         assertThat(user.getActivated()).isEqualTo(true);
         assertThat(user.getPassword()).isNotEmpty();
-        Authority userAuthority = authorityRepository.findOne("ROLE_USER");
+        Authority userAuthority = authorityRepository.findOne("USER");
         assertThat(user.getAuthorities().toArray()).containsExactly(userAuthority);
 
         // Teardown

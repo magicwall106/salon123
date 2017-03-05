@@ -1,6 +1,6 @@
 package com.salon123.service;
 
-import com.salon123.config.JHipsterProperties;
+import com.salon123.config.Salon123Properties;
 import com.salon123.domain.User;
 
 import org.apache.commons.lang.CharEncoding;
@@ -34,7 +34,7 @@ public class MailService {
     private static final String BASE_URL = "baseUrl";
 
     @Inject
-    private JHipsterProperties jHipsterProperties;
+    private Salon123Properties salon123Properties;
 
     @Inject
     private JavaMailSenderImpl javaMailSender;
@@ -55,7 +55,7 @@ public class MailService {
         try {
             MimeMessageHelper message = new MimeMessageHelper(mimeMessage, isMultipart, CharEncoding.UTF_8);
             message.setTo(to);
-            message.setFrom(jHipsterProperties.getMail().getFrom());
+            message.setFrom(salon123Properties.getMail().getFrom());
             message.setSubject(subject);
             message.setText(content, isHtml);
             javaMailSender.send(mimeMessage);

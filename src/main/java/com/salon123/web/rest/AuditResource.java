@@ -1,28 +1,31 @@
 package com.salon123.web.rest;
 
 import com.salon123.service.AuditEventService;
-
-import java.time.LocalDate;
 import com.salon123.web.rest.util.PaginationUtil;
 import org.springframework.boot.actuate.audit.AuditEvent;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.net.URISyntaxException;
 import javax.inject.Inject;
+import java.net.URISyntaxException;
+import java.time.LocalDate;
 import java.util.List;
 
 /**
  * REST controller for getting the audit events.
  */
 @RestController
-@RequestMapping(value = "/management/jhipster/audits", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/management/salon123/audits", produces = MediaType.APPLICATION_JSON_VALUE)
 public class AuditResource {
 
     private AuditEventService auditEventService;

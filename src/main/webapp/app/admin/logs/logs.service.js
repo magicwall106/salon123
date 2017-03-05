@@ -8,7 +8,7 @@
     LogsService.$inject = ['$resource'];
 
     function LogsService ($resource) {
-        var service = $resource('management/jhipster/logs', {}, {
+        var service = $resource('management/salon123/logs', {}, {
             'findAll': { method: 'GET', isArray: true},
             'changeLevel': { method: 'PUT'}
         });

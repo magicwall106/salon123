@@ -1,13 +1,12 @@
 package com.salon123.security.social;
 
-import com.salon123.config.JHipsterProperties;
+import com.salon123.config.Salon123Properties;
 import com.salon123.security.jwt.TokenProvider;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -29,7 +28,7 @@ public class CustomSignInAdapter implements SignInAdapter {
     private UserDetailsService userDetailsService;
 
     @Inject
-    private JHipsterProperties jHipsterProperties;
+    private Salon123Properties salon123Properties;
 
     @Inject
     private TokenProvider tokenProvider;
@@ -50,7 +49,7 @@ public class CustomSignInAdapter implements SignInAdapter {
         } catch (AuthenticationException exception) {
             log.error("Social authentication error");
         }
-        return jHipsterProperties.getSocial().getRedirectAfterSignIn();
+        return salon123Properties.getSocial().getRedirectAfterSignIn();
     }
 
     private Cookie getSocialAuthenticationCookie(String token) {

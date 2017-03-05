@@ -1,6 +1,6 @@
 package com.salon123.web.rest;
 
-import com.salon123.config.JHipsterProperties;
+import com.salon123.config.Salon123Properties;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,7 +21,7 @@ public class ProfileInfoResource {
     Environment env;
 
     @Inject
-    private JHipsterProperties jHipsterProperties;
+    private Salon123Properties salon123Properties;
 
     @RequestMapping(value = "/profile-info",
         method = RequestMethod.GET,
@@ -32,7 +32,7 @@ public class ProfileInfoResource {
 
     private String getRibbonEnv() {
         String[] activeProfiles = env.getActiveProfiles();
-        String[] displayOnActiveProfiles = jHipsterProperties.getRibbon().getDisplayOnActiveProfiles();
+        String[] displayOnActiveProfiles = salon123Properties.getRibbon().getDisplayOnActiveProfiles();
 
         if (displayOnActiveProfiles == null) {
             return null;

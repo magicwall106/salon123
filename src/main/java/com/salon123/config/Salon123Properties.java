@@ -10,8 +10,8 @@ import org.springframework.web.cors.CorsConfiguration;
  *     Properties are configured in the application.yml file.
  * </p>
  */
-@ConfigurationProperties(prefix = "jhipster", ignoreUnknownFields = false)
-public class JHipsterProperties {
+@ConfigurationProperties(prefix = "salon123", ignoreUnknownFields = false)
+public class Salon123Properties {
 
     private final Async async = new Async();
 

@@ -16,7 +16,7 @@
         return service;
 
         function getMetrics () {
-            return $http.get('management/jhipster/metrics').then(function (response) {
+            return $http.get('management/salon123/metrics').then(function (response) {
                 return response.data;
             });
         }

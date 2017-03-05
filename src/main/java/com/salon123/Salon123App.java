@@ -2,7 +2,7 @@ package com.salon123;
 
 import com.salon123.config.Constants;
 import com.salon123.config.DefaultProfileUtil;
-import com.salon123.config.JHipsterProperties;
+import com.salon123.config.Salon123Properties;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,7 +23,7 @@ import java.util.Collection;
 
 @ComponentScan
 @EnableAutoConfiguration(exclude = { MetricFilterAutoConfiguration.class, MetricRepositoryAutoConfiguration.class })
-@EnableConfigurationProperties({ JHipsterProperties.class, LiquibaseProperties.class })
+@EnableConfigurationProperties({ Salon123Properties.class, LiquibaseProperties.class })
 public class Salon123App {
 
     private static final Logger log = LoggerFactory.getLogger(Salon123App.class);

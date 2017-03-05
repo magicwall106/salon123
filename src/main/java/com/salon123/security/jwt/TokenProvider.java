@@ -1,6 +1,6 @@
 package com.salon123.security.jwt;
 
-import com.salon123.config.JHipsterProperties;
+import com.salon123.config.Salon123Properties;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -32,17 +32,17 @@ public class TokenProvider {
     private long tokenValidityInSecondsForRememberMe;
 
     @Inject
-    private JHipsterProperties jHipsterProperties;
+    private Salon123Properties salon123Properties;
 
     @PostConstruct
     public void init() {
         this.secretKey =
-            jHipsterProperties.getSecurity().getAuthentication().getJwt().getSecret();
+            salon123Properties.getSecurity().getAuthentication().getJwt().getSecret();
 
         this.tokenValidityInSeconds =
-            1000 * jHipsterProperties.getSecurity().getAuthentication().getJwt().getTokenValidityInSeconds();
+            1000 * salon123Properties.getSecurity().getAuthentication().getJwt().getTokenValidityInSeconds();
         this.tokenValidityInSecondsForRememberMe =
-            1000 * jHipsterProperties.getSecurity().getAuthentication().getJwt().getTokenValidityInSecondsForRememberMe();
+            1000 * salon123Properties.getSecurity().getAuthentication().getJwt().getTokenValidityInSecondsForRememberMe();
     }
 
     public String createToken(Authentication authentication, Boolean rememberMe) {

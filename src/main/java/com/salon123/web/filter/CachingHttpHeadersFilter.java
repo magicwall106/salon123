@@ -1,6 +1,6 @@
 package com.salon123.web.filter;
 
-import com.salon123.config.JHipsterProperties;
+import com.salon123.config.Salon123Properties;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletResponse;
@@ -17,15 +17,15 @@ public class CachingHttpHeadersFilter implements Filter {
 
     private long CACHE_TIME_TO_LIVE = TimeUnit.DAYS.toMillis(1461L);
 
-    private JHipsterProperties jHipsterProperties;
+    private Salon123Properties salon123Properties;
 
-    public CachingHttpHeadersFilter(JHipsterProperties jHipsterProperties) {
-        this.jHipsterProperties = jHipsterProperties;
+    public CachingHttpHeadersFilter(Salon123Properties salon123Properties) {
+        this.salon123Properties = salon123Properties;
     }
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        CACHE_TIME_TO_LIVE = TimeUnit.DAYS.toMillis(jHipsterProperties.getHttp().getCache().getTimeToLiveInDays());
+        CACHE_TIME_TO_LIVE = TimeUnit.DAYS.toMillis(salon123Properties.getHttp().getCache().getTimeToLiveInDays());
     }
 
     @Override

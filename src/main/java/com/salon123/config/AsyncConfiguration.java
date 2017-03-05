@@ -23,16 +23,16 @@ public class AsyncConfiguration implements AsyncConfigurer {
     private final Logger log = LoggerFactory.getLogger(AsyncConfiguration.class);
 
     @Inject
-    private JHipsterProperties jHipsterProperties;
+    private Salon123Properties salon123Properties;
 
     @Override
     @Bean(name = "taskExecutor")
     public Executor getAsyncExecutor() {
         log.debug("Creating Async Task Executor");
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-        executor.setCorePoolSize(jHipsterProperties.getAsync().getCorePoolSize());
-        executor.setMaxPoolSize(jHipsterProperties.getAsync().getMaxPoolSize());
-        executor.setQueueCapacity(jHipsterProperties.getAsync().getQueueCapacity());
+        executor.setCorePoolSize(salon123Properties.getAsync().getCorePoolSize());
+        executor.setMaxPoolSize(salon123Properties.getAsync().getMaxPoolSize());
+        executor.setQueueCapacity(salon123Properties.getAsync().getQueueCapacity());
         executor.setThreadNamePrefix("salon-123-Executor-");
         return new ExceptionHandlingAsyncTaskExecutor(executor);
     }

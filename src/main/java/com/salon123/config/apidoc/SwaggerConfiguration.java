@@ -1,14 +1,12 @@
 package com.salon123.config.apidoc;
 
 import com.salon123.config.Constants;
-import com.salon123.config.JHipsterProperties;
+import com.salon123.config.Salon123Properties;
 
 import java.util.Date;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.*;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StopWatch;
 import springfox.documentation.service.ApiInfo;
@@ -38,27 +36,27 @@ public class SwaggerConfiguration {
     /**
      * Swagger Springfox configuration.
      *
-     * @param jHipsterProperties the properties of the application
+     * @param salon123Properties the properties of the application
      * @return the Swagger Springfox configuration
      */
     @Bean
-    public Docket swaggerSpringfoxDocket(JHipsterProperties jHipsterProperties) {
+    public Docket swaggerSpringfoxDocket(Salon123Properties salon123Properties) {
         log.debug("Starting Swagger");
         StopWatch watch = new StopWatch();
         watch.start();
         Contact contact = new Contact(
-            jHipsterProperties.getSwagger().getContactName(),
-            jHipsterProperties.getSwagger().getContactUrl(),
-            jHipsterProperties.getSwagger().getContactEmail());
+            salon123Properties.getSwagger().getContactName(),
+            salon123Properties.getSwagger().getContactUrl(),
+            salon123Properties.getSwagger().getContactEmail());
 
         ApiInfo apiInfo = new ApiInfo(
-            jHipsterProperties.getSwagger().getTitle(),
-            jHipsterProperties.getSwagger().getDescription(),
-            jHipsterProperties.getSwagger().getVersion(),
-            jHipsterProperties.getSwagger().getTermsOfServiceUrl(),
+            salon123Properties.getSwagger().getTitle(),
+            salon123Properties.getSwagger().getDescription(),
+            salon123Properties.getSwagger().getVersion(),
+            salon123Properties.getSwagger().getTermsOfServiceUrl(),
             contact,
-            jHipsterProperties.getSwagger().getLicense(),
-            jHipsterProperties.getSwagger().getLicenseUrl());
+            salon123Properties.getSwagger().getLicense(),
+            salon123Properties.getSwagger().getLicenseUrl());
 
         Docket docket = new Docket(DocumentationType.SWAGGER_2)
             .apiInfo(apiInfo)
